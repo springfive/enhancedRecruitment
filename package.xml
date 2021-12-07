@@ -43,6 +43,7 @@
         <name>CustomField</name>
     </types>
     <types>
+        <members>quipurl</members>
         <members>userid</members>
         <name>CustomLabel</name>
     </types>
