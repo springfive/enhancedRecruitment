@@ -5,7 +5,7 @@
         <description>CTC Rejected</description>
         <protected>false</protected>
         <recipients>
-            <recipient>test_hrln@yopmail.com</recipient>
+            <recipient>yashwant.vizzappu@springfive.com</recipient>
             <type>user</type>
         </recipients>
         <senderType>CurrentUser</senderType>
@@ -16,7 +16,7 @@
         <description>Email Upon Approval</description>
         <protected>false</protected>
         <recipients>
-            <recipient>test_hrln@yopmail.com</recipient>
+            <recipient>yashwant.vizzappu@springfive.com</recipient>
             <type>user</type>
         </recipients>
         <senderType>CurrentUser</senderType>
