@@ -84,6 +84,12 @@
         <name>PermissionSet</name>
     </types>
     <types>
+        <members>Recruiting Manager</members>
+        <members>SpringFive Community User</members>
+        <members>applyform Profile</members>
+        <name>Profile</name>
+    </types>
+    <types>
         <members>applyform1</members>
         <name>SiteDotCom</name>
     </types>
