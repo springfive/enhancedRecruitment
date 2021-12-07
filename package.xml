@@ -93,5 +93,10 @@
         <members>applyform1</members>
         <name>SiteDotCom</name>
     </types>
+    <types>
+        <members>Job_Application__c.CTC_Rejected</members>
+        <members>Job_Application__c.Email_Upon_Approval</members>
+        <name>WorkflowAlert</name>
+    </types>
     <version>52.0</version>
 </Package>
