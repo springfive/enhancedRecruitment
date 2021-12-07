@@ -7,6 +7,7 @@ public class TestFormController {
         //con.isChecked=true;
         con.cand.First_Name__c='test';
         con.cand.Last_Name__c='123';
+        con.cand.Email__c='test@springfive.com';
         con.upload();    
         con.saveaction();
     
@@ -17,6 +18,7 @@ public class TestFormController {
         List<SelectOption> selOpts=con.getgender();
         con.cand.First_Name__c='test';
         con.cand.Last_Name__c='123';
+           con.cand.Email__c='test@springfive.com';
         con.isChecked=false;
         con.resume.body=null;
         con.upload();    
@@ -29,6 +31,7 @@ public class TestFormController {
         List<SelectOption> selOpts=con.getgender();
         con.cand.First_Name__c='test';
         con.cand.Last_Name__c='123';
+               con.cand.Email__c='test@springfive.com';
         con.isChecked=true;
         con.resume.body=null;
         con.upload();    
