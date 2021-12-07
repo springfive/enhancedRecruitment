@@ -75,7 +75,6 @@
         <members>Interview_Debriefing__c-HR Round</members>
         <members>Interview_Debriefing__c-Second round</members>
         <members>Interview_Debriefing__c-Tech Interview</members>
-        <members>Job_Application__c-Job Application - Recruiting Manager Layout</members>
         <members>Position__c-Position Layout</members>
         <name>Layout</name>
     </types>
