@@ -79,10 +79,6 @@
         <name>Layout</name>
     </types>
     <types>
-        <members>Recruiting_App_RE</members>
-        <name>PermissionSet</name>
-    </types>
-    <types>
         <members>Recruiting Manager</members>
         <members>SpringFive Community User</members>
         <members>applyform Profile</members>
