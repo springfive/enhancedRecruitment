@@ -128,9 +128,6 @@
         <layout>Candidate__c-Candidate</layout>
     </layoutAssignments>
     <layoutAssignments>
-        <layout>Job_Application__c-Job Application - Recruiting Manager Layout</layout>
-    </layoutAssignments>
-    <layoutAssignments>
         <layout>Position__c-Position Layout</layout>
     </layoutAssignments>
     <loginIpRanges>
