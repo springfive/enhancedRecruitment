@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>53.0</apiVersion>
+    <interviewLabel>Update Brief Details About Positions {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Update Brief Details About Positions</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>Update_Brief_Details_About_Positions</name>
+        <label>Update Brief Details About Positions</label>
+        <locationX>479</locationX>
+        <locationY>254</locationY>
+        <inputAssignments>
+            <field>Brief_Details__c</field>
+            <value>
+                <elementReference>Details_template</elementReference>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>50</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Update_Brief_Details_About_Positions</targetReference>
+        </connector>
+        <object>Position__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordBeforeSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>Details_template</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Job Title: {!$Record.Name}
+Open Date: {!$Record.Open_Date__c}
+Expected Closure Date: {!$Record.Closure_Date__c}
+Contract Type: {!$Record.Contract_Type__c}
+Job Level: {!$Record.Job_Level__c}
+Compensation Range: {!$Record.Compensation_Range__c}
+Job Description: {!$Record.Job_Description__c}
+Key Skills: {!$Record.Skills_Required__c}
+Experience level: {!$Record.Experience_Level__c}
+Education Requirements: {!$Record.Education_Requirements__c}</text>
+    </textTemplates>
+</Flow>

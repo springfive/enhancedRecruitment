@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Email</name>
+        <label>Email</label>
+        <locationX>311</locationX>
+        <locationY>360</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailTemplate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Job_Position__r.Hiring_Manager__r.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>New Joiner</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>53.0</apiVersion>
+    <formulas>
+        <name>daysremaining</name>
+        <dataType>Date</dataType>
+        <expression>{!$Record.CreatedDate} + 60</expression>
+    </formulas>
+    <interviewLabel>Email to recruiter before the onboarding date {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Email to recruiter before the onboarding date</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>42</locationX>
+        <locationY>30</locationY>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status__c</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Offer Accepted</stringValue>
+            </value>
+        </filters>
+        <object>Job_Application__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <scheduledPaths>
+            <name>Scheduled_Email</name>
+            <connector>
+                <targetReference>Email</targetReference>
+            </connector>
+            <label>Scheduled_Email</label>
+            <offsetNumber>-7</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <recordField>Onboarding_Date__c</recordField>
+            <timeSource>RecordField</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>EmailTemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hey there,
+
+You have a new joiner {!$Record.Name} on {!$Record.Onboarding_Date__c}. Gear up for his onboarding. You may want to consider gathering all the documents from {!$Record.Name}. 
+
+This is an automatically generated email.
+
+Thanks</text>
+    </textTemplates>
+</Flow>

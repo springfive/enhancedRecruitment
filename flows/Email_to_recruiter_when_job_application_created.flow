@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <description>Send an email to the recruiter when a new job application is created</description>
+        <name>Send_mail</name>
+        <label>Send mail</label>
+        <locationX>426</locationX>
+        <locationY>484</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <connector>
+            <targetReference>update_currency</targetReference>
+        </connector>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailTemplate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Job_Position__r.Hiring_Manager__r.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>New Job Application created for {!$Record.Job_Position__r.Name} position</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>53.0</apiVersion>
+    <description>An email will be sent to the recruiter when a new job application is created</description>
+    <interviewLabel>Email when {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Email to recruiter when job application created</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <recordUpdates>
+        <name>update_currency</name>
+        <label>update currency</label>
+        <locationX>628</locationX>
+        <locationY>481</locationY>
+        <inputAssignments>
+            <field>CurrencyIsoCode</field>
+            <value>
+                <stringValue>INR</stringValue>
+            </value>
+        </inputAssignments>
+        <inputReference>$Record</inputReference>
+    </recordUpdates>
+    <start>
+        <locationX>300</locationX>
+        <locationY>98</locationY>
+        <connector>
+            <targetReference>Send_mail</targetReference>
+        </connector>
+        <object>Job_Application__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>EmailTemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Dear Recruiter,
+
+There is a new job application for your action.
+
+Job Application Reference: {!$Record.Name}
+
+Position: {!$Record.Job_Position__r.Name}
+
+Candidate: {!$Record.Candidate__r.Name}
+
+Open Date: {!$Record.CreatedDate}
+
+Employment Status: {!$Record.Currently_Employed__c}
+
+Current Employer: {!$Record.Current_Employer__c}
+
+Please click the link below to view all the details.
+
+https://s5--testapr21.lightning.force.com/lightning/o/Job_Application__c/list?filterName=00B580000046K0nEAE</text>
+    </textTemplates>
+</Flow>

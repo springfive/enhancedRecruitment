@@ -1,0 +1,99 @@
+<apex:page docType="html-5.0" sidebar="false" controller="FormController" showHeader="false" standardStylesheets="false">
+    <html lang="en">
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        
+        <apex:stylesheet value="{!URLFOR($Resource.websiteresource,'website/vendors/css/grid.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.websiteresource,'website/vendors/css/ionicons.min.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.websiteresource,'website/vendors/css/animate.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.websiteresource,'website/resources/css/style.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.websiteresource,'website/resources/css/queries.css')}"/>
+        
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap&subset=latin-ext" rel="stylesheet"/>
+        <title>SpringFive | Apply now!</title>
+        
+        <style>     
+            body {
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            font-size : 16px;
+            margin: 0px;
+            text-align: left;
+            color : #4AA5D7;
+            padding: 0px;
+            }
+            
+            h5 {
+            text-align: left;
+            padding: 0px 10px;
+            font-weight : 10000;
+            font-size: 50px;
+            background-color: #FFE0A5;
+            }
+            
+            h1 {
+            text-align: left;
+            font-size: 20px;
+            font-weight:1000;
+            color : #7F304E;
+            }
+            .info {
+            padding: 0px;
+            background-color: #9FD3E8;
+            color: black;
+            font-size: 16px;
+            padding : 10px 50px;
+            margin-top:-0px;
+            }
+            
+            .contentid-style {
+            opacity : 0.1;
+            }
+            
+            input[type=text],
+            input[type=email],
+            select,
+            textarea {
+            border-radius: 16px;
+            transition : border-color 0.1s ease-in;            
+            }
+            
+        </style>
+        
+    </head>
+    <body >
+        <div style="padding : 10px 50px;; background-color:white;">
+            <img src="https://www.springfive.com/resources/img/springfive-logo.svg" alt="Salesforce logo" class="logo"></img><br/><br/><br/><br/>
+        
+    </div >
+    <div style="color:white; text-align: left; padding : 10px 50px;  font-size: 50px; background-color: #5693AF; ">
+        Thanks for applying!
+    </div>
+    
+    <div class="info">
+        <apex:form >
+            <br/><br/>
+            <apex:pageBlock title="We will reach out to you soon!" >
+                <div style="margin-left:90px; margin-top:0px;">
+                    <apex:image url="https://www.springfive.com/resources/img/JOIN-US.svg" height="400" width="400"/>
+                </div> 
+                <br/><br/>
+
+                <br/><br/><br/><br/><br/><br/><br/>
+                <div style="background-color:#5693AF; margin-left:-50px; margin-right:-50px; padding:0px;" >
+                    
+                    <br/><br/><br/><br/>
+                </div>
+                
+                
+            </apex:pageBlock>
+            
+            
+        </apex:form>
+        
+    </div>
+</body> 
+</html>
+<script>
+confirm("Your application is under process.Click Go back button to return to the Job Application page");
+</script>
+</apex:page>

@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Email</name>
+        <label>Email</label>
+        <locationX>132</locationX>
+        <locationY>478</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>EmailTemplate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Job_Application__r.Job_Position__r.Hiring_Manager__r.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Candidate has cleared the round</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>Email_for_rejection</name>
+        <label>Email for rejection</label>
+        <locationX>401</locationX>
+        <locationY>488</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>Emailtemplateforrejection</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Job_Application__r.Job_Position__r.Hiring_Manager__r.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Candidate failed to clear the round</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>53.0</apiVersion>
+    <decisions>
+        <name>Yes_or_No_Decision</name>
+        <label>Yes or No Decision</label>
+        <locationX>253</locationX>
+        <locationY>356</locationY>
+        <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
+        <rules>
+            <name>Decision</name>
+            <conditionLogic>or</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.InterviewersEvaluation__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Yes</stringValue>
+                </rightValue>
+            </conditions>
+            <conditions>
+                <leftValueReference>$Record.InterviewersEvaluation__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Yes with reservations</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Email</targetReference>
+            </connector>
+            <label>Decision Yes</label>
+        </rules>
+        <rules>
+            <name>Decision_No</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>$Record.InterviewersEvaluation__c</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>No</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Email_for_rejection</targetReference>
+            </connector>
+            <label>Decision No</label>
+        </rules>
+    </decisions>
+    <interviewLabel>Email to recruiter after candidate clears each round {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Email to recruiter after candidate clears each round</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>123</locationX>
+        <locationY>47</locationY>
+        <connector>
+            <targetReference>Yes_or_No_Decision</targetReference>
+        </connector>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>InterviewersEvaluation__c</field>
+            <operator>IsChanged</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </filters>
+        <object>Interview_Debriefing__c</object>
+        <recordTriggerType>Update</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>EmailTemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi,
+
+The candidate {!$Record.Job_Application__r.Candidate__r.Name} has successfully passed the interview with {!$Record.Interviewer__r.FirstName} {!$Record.Interviewer__r.LastName} for the job {!$Record.Job_Application__r.Job_Position__r.Name}
+
+Please click the link below to view all the details. 
+https://s5--testapr21.lightning.force.com/lightning/r/Job_Application__c/{!$Record.Job_Application__r.Id}/view
+
+This is an automatically generated email.</text>
+    </textTemplates>
+    <textTemplates>
+        <name>Emailtemplateforrejection</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Hi,
+
+The candidate {!$Record.Job_Application__r.Candidate__r.Name} has failed to pass the interview with {!$Record.Interviewer__r.FirstName} {!$Record.Interviewer__r.LastName} for the job {!$Record.Job_Application__r.Job_Position__r.Name}</text>
+    </textTemplates>
+</Flow>

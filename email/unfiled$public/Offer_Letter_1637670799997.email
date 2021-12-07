@@ -1,0 +1,15 @@
+<html><head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">
+<p>Dear&nbsp;{{{Job_Application__c.Candidate__c}}} ,</p>
+
+<p>We are glad that you accepted the&nbsp;offer for the position {{{Job_Application__c.Job_Position__c}}}. We are very excited to have as a part of SpringFive. I have attached the&nbsp;offer&nbsp;letter&nbsp;for your reference.</p>
+
+<p>Kindly share the signed copy of the&nbsp;offer&nbsp;letter&nbsp;back to me. Kindly let me know for further information.</p>
+
+<p>Thanks!</p>
+
+<p>Regards,</p>
+
+</body></html>

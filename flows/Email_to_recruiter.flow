@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>send_mail</name>
+        <label>send mail</label>
+        <locationX>479</locationX>
+        <locationY>439</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>emailtemplate</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Hiring_Manager__r.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>{!$Record.Name} has been opened!</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>53.0</apiVersion>
+    <interviewLabel>Email to recruiter {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Email to recruiter</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>361</locationX>
+        <locationY>37</locationY>
+        <connector>
+            <targetReference>send_mail</targetReference>
+        </connector>
+        <object>Position__c</object>
+        <recordTriggerType>Create</recordTriggerType>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>emailtemplate</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>Dear Recruiter, 
+There is a new job opening for your action
+ 
+Job Title: {!$Record.Name} 
+
+Open Date: {!$Record.Open_Date__c}
+
+Expected Closure Date: {!$Record.Closure_Date__c}
+
+Contract Type: {!$Record.Contract_Type__c}
+
+Job Level: {!$Record.Job_Level__c}
+
+Compensation Range: {!$Record.Compensation_Range__c}
+
+Job Description: {!$Record.Job_Description__c}
+
+Key Skills: {!$Record.Skills_Required__c}
+
+Experience Level: {!$Record.Experience_Level__c}
+
+Educational Requirements: {!$Record.Education_Requirements__c}
+
+Use this link to share share across Job hiring platforms : https://testapr21-springfive.cs84.force.com/applyform/?positionId={!$Record.Id}
+
+Please reach out to {!$User.FirstName} for any additional information about the job opening.
+
+This is an automatically generated email.</text>
+    </textTemplates>
+</Flow>

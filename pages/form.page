@@ -1,0 +1,178 @@
+<apex:page docType="html-5.0" Controller="FormController" sidebar="false" showHeader="false" standardStylesheets="false">
+    <html lang="en">
+        <head>
+            <meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
+        
+        <apex:stylesheet value="{!URLFOR($Resource.websiteresource,'website/vendors/css/grid.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.websiteresource,'website/vendors/css/ionicons.min.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.websiteresource,'website/vendors/css/animate.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.websiteresource,'website/resources/css/style.css')}"/>
+        <apex:stylesheet value="{!URLFOR($Resource.websiteresource,'website/resources/css/queries.css')}"/>
+        
+        <link href="https://fonts.googleapis.com/css?family=Montserrat:300,400,700&display=swap&subset=latin-ext" rel="stylesheet"/>
+        <title>SpringFive | Apply now!</title>
+        
+        <style>     
+            body {
+            font-family: 'Montserrat', 'Arial', sans-serif;
+            font-size : 16px;
+            margin: 0px;
+            text-align: left;
+            color : #4AA5D7;
+            padding: 0px;
+            }
+            
+            h5 {
+            text-align: left;
+            padding: 0px 10px;
+            font-weight : 10000;
+            font-size: 50px;
+            background-color: #FFE0A5;
+            }
+            
+            h1 {
+            text-align: left;
+            font-size: 20px;
+            font-weight:1000;
+            color : #7F304E;
+            }
+            .info {
+            padding: 0px;
+            background-color: #9FD3E8;
+            color: black;
+            font-size: 16px;
+            padding : 10px 50px;
+            margin-top:-886px;
+            }
+            
+            .contentid-style {
+            opacity : 0.1;
+            }
+            
+            input[type=text],
+            input[type=email],
+            select,
+            textarea {
+            border-radius: 16px;
+            transition : border-color 0.1s ease-in;            
+            }
+            
+        </style>
+        
+    </head>
+    <body >
+        <div style="padding : 10px 50px;; background-color:white;">
+            <img src="https://www.springfive.com/resources/img/springfive-logo.svg" alt="Salesforce logo" class="logo"></img><br/><br/><br/><br/>
+        
+    </div >
+    <div style="color:white; text-align: left; padding : 10px 50px; font-size: 50px; background-color: #5693AF; ">
+        Let us Know about you!
+    </div>
+    <div style="margin-left:900px; margin-top:200px;">
+        <apex:image url="https://www.springfive.com/resources/img/FX-SPRINGFIVE-ILLUS-A-2021-FR.svg" height="682" width="810"/>
+    </div>
+    <div class="info">
+        
+        <apex:form >
+            <br/><br/>
+            <apex:pageBlock title="Join With Us!" >
+                <apex:pageBlockSection columns="1" >                   
+                    <apex:inputText label="First Name" onchange="name();" value="{!cand.First_Name__c}" required="true" /><br/>
+                    <apex:inputText label="Last Name" onchange="name();" value="{!cand.Last_Name__c}" required="true" /><br/>
+                    <apex:inputText label="Email" onchange="email();" value="{!cand.Email__c}" required="true"/><br/>
+                    <apex:inputText label="Contact Number" value="{!cand.Phone__c}"/><br/>
+                    <apex:inputText label="Alternate Contact Number" value="{!cand.Alternate_Phone__c}"/><br/>
+                    <apex:inputText label="Current Location" value="{!cand.Current_City__c}"/><br/>
+                    <apex:inputCheckbox label="Ready to relocate?" value="{!cand.Ready_to_relocate__c}"/><br/>
+                    <apex:inputText label="Total Experience" value="{!cand.Profession__c}"/><br/>
+                    <apex:selectList label="Gender" value="{!cand.Gender__c}" size="1"><br/>
+                        <apex:selectOptions value="{!gender}">             
+                        </apex:selectOptions>
+                    </apex:selectList>
+                    
+                    <br/>
+                    <apex:inputText label="What is your highest educational qualification?" value="{!cand.Education__c}"/><br/>
+                    <apex:inputCheckbox label="Currently Employed?" value="{!jobapp.Currently_Employed__c}"/><br/>
+                    <apex:inputText label="What is your current designation?" value="{!cand.Current_Designation__c}"/><br/>
+                    <apex:inputText label="Name of your current company" value="{!cand.Current_Company__c}"/><br/>
+                    <apex:inputText label="What is your current compensation (Fixed +Var)?" value="{!cand.Current_Compensation__c}"/><br/>
+                    <apex:inputText label="What is your expected CTC ?" value="{!cand.Expected_CTC__c}"/><br/>
+                    <apex:inputText label="What is your Notice Period ?" value="{!cand.Notice_Period__c}"/><br/><br/>
+                    <h1>Upload Resume*</h1><br/>
+                    <apex:pageBlockSection >
+                        <div style="margin:0px;">
+                            
+                            <apex:inputFile onchange="uploaded();" value="{!resume.body}" filename="{!resume.name}" id="file" required="true"/><br/>
+                        </div>
+                        
+                    </apex:pageBlockSection>
+                    <br/>
+                    <h1>Additional Documents</h1><br/> 
+                    <apex:pageBlockSection >
+                        <div style="margin-left;35px;">
+                            <apex:inputFile value="{!adddoc.body}" filename="{!adddoc.name}" id="file1"/><br/>
+                        </div>
+                        <div style="margin-top:150px;">
+                            <apex:pageMessages /> 
+                        </div>
+                    </apex:pageBlockSection>
+                    
+                </apex:pageBlockSection>
+                <div style="margin-left:410px; margin-top:-350px;">
+                    <apex:inputCheckbox immediate="true" onclick="clicked();" value="{!isChecked}" required="true" selected="false">
+                        
+                    </apex:inputCheckbox>
+                    <div style="margin-left:20px; margin-top:-25px; font-size:12px;">
+                        
+                        By submitting this form, I agree<br/> that the information entered in<br/> this form will be used as part of<br/> the application process initiated.
+                        
+                    </div>
+                </div>
+                
+                <div style="margin-left:450px; margin-top:30px;">
+                    
+                    
+                    <apex:commandButton onclick="myconfirm();" value="Apply" action="{!saveaction}"/>
+                </div><br/><br/><br/><br/><br/><br/><br/><br/><br/>
+                <div style="background-color:#5693AF; margin-left:-50px; margin-right:-50px; padding:0px;" >
+                    
+                    <br/><br/><br/><br/>
+                </div>
+                
+                
+            </apex:pageBlock>
+            
+            
+        </apex:form>
+        
+    </div>
+</body> 
+</html>
+<script type="text/javascript">
+var agree;
+var resume;
+//alert("Please ensure that you have provided all required details before applying");
+function clicked(){
+    agree="true";
+}
+function uploaded(){
+    resume="true";
+}
+function myconfirm() {
+    if(!resume){
+        alert('Upload your CV');
+    }else if(agree=="true" && resume=="true"){
+        confirm("Details shared by you looks fine!");
+    }else if(resume!="true" && agree!="true" ){
+        confirm("Please upload your resume and agree our Policy");
+    }else if(resume!="true" && agree=="true"){
+        confirm("Your resume is not uploaded");
+    }else if(agree!="true" && resume=="true"){
+        confirm("Please agree our Policy"); 
+    }
+}
+
+
+</script>
+
+</apex:page>

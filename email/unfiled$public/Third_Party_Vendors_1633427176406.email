@@ -1,0 +1,31 @@
+<html><head>
+	<title></title>
+</head>
+<body style="height: auto; min-height: auto;">Dear Recruiter,<br />
+<br />
+<br />
+Please be informed that there is a new job opening in SpringFive. We are sharing this with you to get suitable profiles. Please find the details&nbsp;below.<br />
+<br />
+Job Title:&nbsp;{{{Position__c.Name}}}<br />
+<br />
+Open Date:&nbsp;{{{Position__c.Open_Date__c}}}<br />
+<br />
+Expected Closure&nbsp;Date:&nbsp;{{{Position__c.Closure_Date__c}}}<br />
+<br />
+Contract Type:&nbsp;{{{Position__c.Contract_Type__c}}}<br />
+<br />
+Job Level:&nbsp;{{{Position__c.Job_Level__c}}}<br />
+<br />
+Compensation Range:&nbsp;{{{Position__c.Compensation_Range__c}}}<br />
+<br />
+Job Description:&nbsp;{{{Position__c.Job_Description__c}}}<br />
+<br />
+Key Skills:&nbsp;{{{Position__c.Skills_Required__c}}}<br />
+<br />
+Experience level:&nbsp;{{{Position__c.Experience_Level__c}}}<br />
+<br />
+Education Requirements:&nbsp;{{{Position__c.Education_Requirements__c}}}<br />
+<br />
+Please reach out to the&nbsp;undersigned for any additional information&nbsp;about the job opening.<br />
+&nbsp;
+</body></html>

@@ -1,0 +1,211 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fields>
+        <fullName>Basic_Pay_in_INR__c</fullName>
+        <externalId>false</externalId>
+        <formula>Proposed_CTC_in_INR__c *(50/100)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Basic Pay (in INR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Employee_Provident_Fund_in_INR__c</fullName>
+        <externalId>false</externalId>
+        <label>Employee Provident Fund (in INR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>HRA_in_INR__c</fullName>
+        <externalId>false</externalId>
+        <formula>Proposed_CTC_in_INR__c *(20/100)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>HRA (in INR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Interviewer_s_Feedback__c</fullName>
+        <description>Evaluation by the interviewer</description>
+        <externalId>false</externalId>
+        <label>Interviewer&apos;s Feedback</label>
+        <length>32768</length>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>7</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Meal_Card_in_INR__c</fullName>
+        <externalId>false</externalId>
+        <label>Meal Card (in INR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Proposed_CTC_in_INR__c</fullName>
+        <description>Field for storing proposed CTC</description>
+        <externalId>false</externalId>
+        <label>Proposed CTC (in INR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Special_Allowance_in_INR__c</fullName>
+        <externalId>false</externalId>
+        <formula>Proposed_CTC_in_INR__c -( Basic_Pay_in_INR__c  +  HRA_in_INR__c  +  Variable_Pay_in_INR__c  +  Meal_Card_in_INR__c   + Employee_Provident_Fund_in_INR__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Special Allowance (in INR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+    <fields>
+        <fullName>Status__c</fullName>
+        <description>Application Status.</description>
+        <externalId>false</externalId>
+        <label>Status</label>
+        <required>false</required>
+        <trackFeedHistory>false</trackFeedHistory>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+        <valueSet>
+            <restricted>true</restricted>
+            <valueSetDefinition>
+                <sorted>false</sorted>
+                <value>
+                    <fullName>New</fullName>
+                    <default>true</default>
+                    <label>New</label>
+                </value>
+                <value>
+                    <fullName>Under Prequalification</fullName>
+                    <default>false</default>
+                    <label>1️⃣ Phone Call</label>
+                </value>
+                <value>
+                    <fullName>AptitudeTest</fullName>
+                    <default>false</default>
+                    <label>1️⃣ Aptitude Test</label>
+                </value>
+                <value>
+                    <fullName>Ongoing HR Interview</fullName>
+                    <default>false</default>
+                    <label>2️⃣ HR Interview</label>
+                </value>
+                <value>
+                    <fullName>TechnicalInterview</fullName>
+                    <default>false</default>
+                    <label>2️⃣ Technical Interview</label>
+                </value>
+                <value>
+                    <fullName>Ongoing Technical Interview</fullName>
+                    <default>false</default>
+                    <label>3️⃣ Operational Interview</label>
+                </value>
+                <value>
+                    <fullName>ManagerialInterview</fullName>
+                    <default>false</default>
+                    <label>3️⃣ Managerial Interview</label>
+                </value>
+                <value>
+                    <fullName>HRInterviewIndia</fullName>
+                    <default>false</default>
+                    <label>4️⃣ HR Interview</label>
+                </value>
+                <value>
+                    <fullName>Ongoing Final Interview</fullName>
+                    <default>false</default>
+                    <label>4️⃣ Final Interview</label>
+                </value>
+                <value>
+                    <fullName>Offer Accepted</fullName>
+                    <default>false</default>
+                    <label>✅ Hired</label>
+                </value>
+                <value>
+                    <fullName>Joined</fullName>
+                    <default>false</default>
+                    <label>✅Joined</label>
+                </value>
+                <value>
+                    <fullName>Cancelled</fullName>
+                    <default>false</default>
+                    <label>❌ Cancelled</label>
+                </value>
+                <value>
+                    <fullName>Rejected</fullName>
+                    <default>false</default>
+                    <label>❌ Rejected</label>
+                </value>
+                <value>
+                    <fullName>Offer Declined</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Offer Declined</label>
+                </value>
+                <value>
+                    <fullName>Offer Sent</fullName>
+                    <default>false</default>
+                    <isActive>false</isActive>
+                    <label>Offer Sent</label>
+                </value>
+            </valueSetDefinition>
+        </valueSet>
+    </fields>
+    <fields>
+        <fullName>Today__c</fullName>
+        <businessStatus>Active</businessStatus>
+        <externalId>false</externalId>
+        <formula>TODAY()</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Today</label>
+        <required>false</required>
+        <securityClassification>Public</securityClassification>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Variable_Pay_in_INR__c</fullName>
+        <externalId>false</externalId>
+        <formula>Proposed_CTC_in_INR__c *(8.33/100)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Variable Pay (in INR)</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>2</scale>
+        <trackHistory>false</trackHistory>
+        <trackTrending>false</trackTrending>
+        <type>Currency</type>
+    </fields>
+</CustomObject>

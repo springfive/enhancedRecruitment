@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<EmailTemplate xmlns="http://soap.sforce.com/2006/04/metadata">
+    <available>true</available>
+    <encodingKey>ISO-8859-1</encodingKey>
+    <name>Proposed Offer</name>
+    <pageDevName>Proposed_Offer1</pageDevName>
+    <relatedEntityType>Job_Application__c</relatedEntityType>
+    <style>none</style>
+    <subject>Proposed Offer</subject>
+    <type>custom</type>
+    <uiType>SFX</uiType>
+</EmailTemplate>
